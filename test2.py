@@ -3,6 +3,7 @@ import dlib
 import numpy
 import math
 
+#Èç¹û³öÏÖÁËcv2µ¼ÈëÊ§°ÜµÄÎÊÌâ£¬¿ÉÒÔ³¢ÊÔÔÚanacondaÏÂÃæÖ´ĞĞconda update hdf5£¬À´¸üĞÂÒ»ÏÂopencvµÄ°æ±¾¡£
 #array1 = numpy.array([[1,1],[2,2]])
 #print(array1)
 r = math.pi * (30 / 360)
@@ -11,12 +12,12 @@ matrix1 = numpy.matrix(angle)
 print(matrix1)
 matrix2 = numpy.matrix([[2,0],[0,2]])
 print(matrix2)
-#æ±‚å¹³å‡å€¼
+#ÇóÆ½¾ùÖµ
 c1 = numpy.mean(matrix1, axis=0)
 c2 = numpy.mean(matrix2, axis=0)
 print(c1)
 print(c2)
- #æ±‚æ ‡å‡†å·®,è®¡ç®—ç¦»æ•£ç¨‹åº¦;
+ #Çó±ê×¼²î,¼ÆËãÀëÉ¢³Ì¶È;
 s1 = numpy.std(matrix1)
 s2 = numpy.std(matrix2)
 print(s1)
@@ -24,14 +25,14 @@ print(s2)
 U, S, Vt = numpy.linalg.svd(matrix1.T * matrix2)
 print(U)
 print(Vt)
-R = (U * Vt).T #è®¡ç®—å‡ºæ—‹è½¬çŸ©é˜µ
+R = (U * Vt).T #¼ÆËã³öĞı×ª¾ØÕó
 print(R)
 print("--------")
-print((s2 / s1) * R) #ç¼©æ”¾åçš„æ—‹è½¬çŸ©é˜µ
+print((s2 / s1) * R) #Ëõ·ÅºóµÄĞı×ª¾ØÕó
 print(c2.T)
 print(c1.T)
-print(c2.T - (s2 / s1) * R * c1.T) #è®¡ç®—ç§»åŠ¨
-#hstack : ç¼©æ”¾æ—‹è½¬çŸ©é˜µå’Œä½ç§»çŸ©é˜µç»“åˆ
+print(c2.T - (s2 / s1) * R * c1.T) #¼ÆËãÒÆ¶¯
+#hstack : Ëõ·ÅĞı×ª¾ØÕóºÍÎ»ÒÆ¾ØÕó½áºÏ
 ret = numpy.vstack([numpy.hstack(((s2 / s1) * R,c2.T - (s2 / s1) * R * c1.T)),numpy.matrix([0., 0., 1.])])
 print("------------")
 print(ret)
